@@ -141,7 +141,7 @@ def main(model, model_path, port, host, ):
     def mask_to_svg_path(mask: np.ndarray) -> str:
         """将二维掩码转换为 SVG 路径字符串
         
-        使用 Marching Squares 算法提取轮廓，并生成 SVG path 数据
+        使用 Marching Squares 算法提取轮廓，并生成标准的 SVG path 数据
         """
         # 确保掩码是 float32 类型
         mask = mask.astype(np.float32)
@@ -155,12 +155,20 @@ def main(model, model_path, port, host, ):
         # 生成 SVG 路径
         paths = []
         for contour in contours:
-            # 交换 x,y 坐标并四舍五入到整数
-            contour = np.round(contour[:, [1, 0]]).astype(int)
+            # 交换 x,y 坐标
+            contour = contour[:, [1, 0]]
             
-            # 构建路径字符串，使用逗号连接点
-            points = [f"{point[0]},{point[1]}" for point in contour]
-            path = "M" + " ".join(points) + " Z"  # 闭合路径
+            if len(contour) < 2:  # 忽略太短的路径
+                continue
+            
+            # 构建标准的 SVG 路径命令
+            path = f"M {contour[0][0]},{contour[0][1]}"  # 移动到起始点
+            
+            # 添加线段命令
+            for point in contour[1:]:
+                path += f" L {point[0]},{point[1]}"
+            
+            path += " Z"  # 闭合路径
             paths.append(path)
         
         return " ".join(paths)
