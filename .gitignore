@@ -1,4 +1,5 @@
 .nfs*
+.DS_Store
 
 # compilation and distribution
 __pycache__
@@ -18,6 +19,7 @@ wheels/
 *.npy
 *.ts
 model_ts*.txt
+venv
 
 # onnx models
 *.onnx
