@@ -1,6 +1,10 @@
 ## segementAnything web 交互式 demo
 
-<video src="https://raw.githubusercontent.com/yaolinhong/segment-anything/refs/heads/main/assets/minidemo.mp4" controls width="500"></video>
+
+
+https://github.com/user-attachments/assets/f79658be-9235-4b1a-ba25-6fb6bd6cf3a4
+
+
 
 启动 server
 ```
