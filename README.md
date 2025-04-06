@@ -1,3 +1,27 @@
+## segementAnything web 交互式 demo
+
+<video src="https://raw.githubusercontent.com/yaolinhong/segment-anything/refs/heads/main/assets/minidemo.mp4" controls width="500"></video>
+
+启动 server
+```
+ # 创建一个名为 sam 的 Python 3.8 环境
+ conda create -n sam python=3.8
+ # 激活环境
+ conda activate sam
+ #下载模型 放到 models下 https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+ pip install -e .
+ python3 scripts/server.py
+```
+
+## 启动 web
+```
+cd web 
+pnpm i 
+pnpm dev
+```
+
+ps： mac 运行成功 计算都改成float32
+
 ## Latest updates -- SAM 2: Segment Anything in Images and Videos
 
 Please check out our new release on [**Segment Anything Model 2 (SAM 2)**](https://github.com/facebookresearch/segment-anything-2).
